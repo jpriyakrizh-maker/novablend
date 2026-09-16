@@ -1,0 +1,1016 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  background: #17100d;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* ================================
+   PAGE
+================================ */
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+
+  background:
+    radial-gradient(circle at 50% 50%, #4d291d 0%, transparent 42%),
+    #17100d;
+}
+
+/* ================================
+   MAIN SHOWCASE
+================================ */
+
+.showcase {
+  position: relative;
+  width: 900px;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 32px;
+  isolation: isolate;
+
+  display: flex;
+  align-items: center;
+
+  box-shadow:
+    0 35px 100px rgba(0, 0, 0, 0.55),
+    inset 0 1px 1px rgba(255, 255, 255, 0.18);
+
+  transition:
+    background 0.7s ease,
+    box-shadow 0.7s ease;
+
+  perspective: 1200px;
+}
+
+/* ================================
+   GLASS OVERLAY
+================================ */
+
+.showcase::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background:
+    linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0.13),
+      transparent 25%,
+      transparent 70%,
+      rgba(255, 255, 255, 0.05)
+    );
+
+  pointer-events: none;
+}
+
+/* ================================
+   CENTER GLOW
+================================ */
+
+.showcase::after {
+  content: "";
+
+  position: absolute;
+  width: 430px;
+  height: 430px;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  background: rgba(255, 255, 255, 0.055);
+
+  filter: blur(70px);
+  border-radius: 50%;
+
+  z-index: -1;
+}
+
+/* ================================
+   BRAND
+================================ */
+
+.brand {
+  position: absolute;
+
+  top: 28px;
+  left: 34px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.92);
+
+  z-index: 10;
+}
+
+.brand svg {
+  filter:
+    drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+}
+
+/* ================================
+   LEFT CONTENT
+================================ */
+
+.left-content {
+  position: absolute;
+
+  left: 38px;
+  bottom: 52px;
+
+  width: 230px;
+
+  z-index: 5;
+}
+
+.left-content h1 {
+  font-family: "DM Serif Display", serif;
+
+  font-size: 38px;
+  line-height: 0.98;
+  font-weight: 400;
+
+  margin-bottom: 16px;
+
+  color: #fff;
+
+  text-shadow:
+    0 5px 25px rgba(0, 0, 0, 0.25);
+}
+
+.left-content p {
+  width: 215px;
+
+  font-size: 11px;
+  line-height: 1.7;
+  font-weight: 500;
+
+  color: rgba(255, 255, 255, 0.68);
+}
+
+/* ================================
+   PRODUCT AREA
+================================ */
+
+.product-area {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 300px;
+  height: 400px;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 3;
+}
+
+/* ================================
+   REALISTIC GLASS
+================================ */
+
+.glass-placeholder {
+  position: absolute;
+
+  left: 50%;
+  top: 45px;
+
+  width: 155px;
+  height: 290px;
+
+  transform:
+    translateX(-50%)
+    translateY(0);
+
+  transform-style: preserve-3d;
+
+  overflow: hidden;
+
+  border-radius:
+    22px
+    22px
+    34px
+    34px;
+
+  border:
+    2px solid rgba(255, 255, 255, 0.4);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.11),
+      rgba(255, 255, 255, 0.025) 35%,
+      rgba(255, 255, 255, 0.07) 70%,
+      rgba(255, 255, 255, 0.015)
+    );
+
+  backdrop-filter: blur(5px);
+
+  box-shadow:
+    inset 7px 0 15px rgba(255, 255, 255, 0.15),
+    inset -8px 0 18px rgba(0, 0, 0, 0.25),
+    inset 0 -10px 20px rgba(255, 255, 255, 0.08),
+    0 25px 50px rgba(0, 0, 0, 0.5);
+
+  cursor: pointer;
+
+  z-index: 4;
+
+  transition:
+    transform 0.15s ease-out;
+}
+
+/* ================================
+   GLASS TOP RIM
+================================ */
+
+.glass-placeholder::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 5px;
+
+  width: 128px;
+  height: 15px;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  border:
+    2px solid rgba(255, 255, 255, 0.5);
+
+  background:
+    rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    inset 0 2px 5px rgba(255, 255, 255, 0.3),
+    0 0 12px rgba(255, 255, 255, 0.08);
+
+  z-index: 30;
+
+  pointer-events: none;
+}
+
+/* ================================
+   LIQUID
+================================ */
+
+.liquid {
+  position: absolute;
+
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+
+  height: 88%;
+
+  border-radius:
+    16px
+    16px
+    30px
+    30px;
+
+  overflow: hidden;
+
+  z-index: 1;
+
+  animation:
+    liquidMove 4s ease-in-out infinite;
+}
+
+@keyframes liquidMove {
+  0% {
+    transform: scaleX(1);
+  }
+
+  50% {
+    transform: scaleX(1.025);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+/* ================================
+   LIQUID SURFACE
+================================ */
+
+.liquid::before {
+  content: "";
+
+  position: absolute;
+
+  left: 4%;
+  top: -5px;
+
+  width: 92%;
+  height: 20px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.18);
+
+  border:
+    1px solid rgba(255, 255, 255, 0.25);
+
+  box-shadow:
+    inset 0 3px 7px rgba(255, 255, 255, 0.22),
+    0 3px 8px rgba(0, 0, 0, 0.15);
+
+  z-index: 12;
+}
+
+/* ================================
+   CREAM SWIRL
+================================ */
+
+.cream-swirl {
+  position: absolute;
+
+  width: 95px;
+  height: 190px;
+
+  left: 25px;
+  top: 30px;
+
+  border-radius: 50%;
+
+  opacity: 0.35;
+
+  filter: blur(12px);
+
+  transform: rotate(22deg);
+
+  mix-blend-mode: screen;
+
+  animation:
+    swirlMove 5s ease-in-out infinite;
+}
+
+.swirl-two {
+  width: 70px;
+  height: 160px;
+
+  left: 70px;
+  top: 80px;
+
+  opacity: 0.25;
+
+  transform: rotate(-28deg);
+
+  animation-delay: 1s;
+}
+
+@keyframes swirlMove {
+  0% {
+    transform:
+      translateY(0)
+      rotate(22deg);
+  }
+
+  50% {
+    transform:
+      translateY(12px)
+      rotate(30deg);
+  }
+
+  100% {
+    transform:
+      translateY(0)
+      rotate(22deg);
+  }
+}
+
+/* ================================
+   ICE CUBES
+================================ */
+
+.ice {
+  position: absolute;
+
+  width: 42px;
+  height: 35px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.15)
+    );
+
+  border:
+    1px solid rgba(255, 255, 255, 0.6);
+
+  border-radius: 8px;
+
+  box-shadow:
+    inset 4px 4px 8px rgba(255, 255, 255, 0.45),
+    0 5px 12px rgba(0, 0, 0, 0.2);
+
+  backdrop-filter: blur(3px);
+
+  z-index: 5;
+}
+
+.ice-one {
+  top: 12px;
+  left: 24px;
+
+  transform: rotate(15deg);
+}
+
+.ice-two {
+  top: 20px;
+  right: 20px;
+
+  width: 38px;
+  height: 32px;
+
+  transform: rotate(-18deg);
+}
+
+.ice-three {
+  top: 38px;
+  left: 57px;
+
+  width: 40px;
+  height: 32px;
+
+  transform: rotate(7deg);
+}
+
+/* ================================
+   INSIDE BUBBLES
+================================ */
+
+.drink-bubble {
+  position: absolute;
+
+  border-radius: 50%;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.55);
+
+  background:
+    rgba(255, 255, 255, 0.1);
+
+  box-shadow:
+    inset 2px 2px 4px rgba(255, 255, 255, 0.35);
+
+  z-index: 6;
+
+  animation:
+    drinkBubble 3s ease-in-out infinite;
+}
+
+.drink-bubble-one {
+  width: 7px;
+  height: 7px;
+
+  left: 25px;
+  bottom: 45px;
+}
+
+.drink-bubble-two {
+  width: 5px;
+  height: 5px;
+
+  left: 48px;
+  bottom: 75px;
+
+  animation-delay: 0.6s;
+}
+
+.drink-bubble-three {
+  width: 9px;
+  height: 9px;
+
+  right: 30px;
+  bottom: 55px;
+
+  animation-delay: 1s;
+}
+
+.drink-bubble-four {
+  width: 5px;
+  height: 5px;
+
+  right: 48px;
+  bottom: 105px;
+
+  animation-delay: 1.4s;
+}
+
+.drink-bubble-five {
+  width: 6px;
+  height: 6px;
+
+  left: 70px;
+  bottom: 30px;
+
+  animation-delay: 2s;
+}
+
+@keyframes drinkBubble {
+  0% {
+    transform: translateY(10px);
+    opacity: 0.2;
+  }
+
+  50% {
+    transform: translateY(-12px);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(-25px);
+    opacity: 0;
+  }
+}
+
+/* ================================
+   GLASS SHINE
+================================ */
+
+.glass-shine {
+  position: absolute;
+
+  top: 8px;
+  left: 13px;
+
+  width: 20px;
+  height: 250px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+
+  filter: blur(2px);
+
+  opacity: 0.75;
+
+  transform: rotate(4deg);
+
+  z-index: 10;
+
+  pointer-events: none;
+}
+
+/* ================================
+   SECOND REFLECTION
+================================ */
+
+.glass-reflection {
+  position: absolute;
+
+  top: 15px;
+  right: 12px;
+
+  width: 8px;
+  height: 190px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.25);
+
+  filter: blur(3px);
+
+  z-index: 10;
+
+  pointer-events: none;
+}
+
+/* ================================
+   NOVA LOGO
+================================ */
+
+.glass-logo {
+  position: absolute;
+
+  left: 50%;
+  top: 52%;
+
+  transform:
+    translate(-50%, -50%);
+
+  color:
+    rgba(255, 255, 255, 0.95);
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  letter-spacing: 5px;
+
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.5),
+    0 0 20px rgba(255, 255, 255, 0.25);
+
+  z-index: 20;
+
+  pointer-events: none;
+}
+
+/* ================================
+   PRODUCT ENTRY
+================================ */
+
+.glass-enter {
+  animation:
+    glassFromTop 0.8s
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes glassFromTop {
+  0% {
+    opacity: 0;
+
+    transform:
+      translateX(-50%)
+      translateY(-55px)
+      scale(0.9)
+      rotateX(-10deg);
+  }
+
+  55% {
+    opacity: 1;
+
+    transform:
+      translateX(-50%)
+      translateY(7px)
+      scale(1.03)
+      rotateX(3deg);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      translateX(-50%)
+      translateY(0)
+      scale(1)
+      rotateX(0deg);
+  }
+}
+
+/* ================================
+   PRICE
+================================ */
+
+.price {
+  position: absolute;
+
+  left: 50%;
+  top: 350px;
+
+  transform:
+    translateX(-50%);
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  color: #fff;
+
+  text-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.3);
+
+  white-space: nowrap;
+}
+
+/* ================================
+   OUTSIDE BUBBLES
+================================ */
+
+.bubble {
+  position: absolute;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      rgba(255, 255, 255, 0.85),
+      rgba(255, 255, 255, 0.18) 35%,
+      rgba(255, 255, 255, 0.04) 70%,
+      transparent 72%
+    );
+
+  border:
+    1px solid rgba(255, 255, 255, 0.16);
+
+  backdrop-filter: blur(4px);
+
+  animation:
+    floatBubble 5s ease-in-out infinite;
+
+  opacity: 0.75;
+}
+
+.bubble-1 {
+  width: 26px;
+  height: 26px;
+
+  left: 38px;
+  top: 80px;
+
+  animation-delay: 0s;
+}
+
+.bubble-2 {
+  width: 15px;
+  height: 15px;
+
+  left: 92px;
+  top: 175px;
+
+  animation-delay: 1s;
+}
+
+.bubble-3 {
+  width: 34px;
+  height: 34px;
+
+  right: 48px;
+  top: 75px;
+
+  animation-delay: 1.5s;
+}
+
+.bubble-4 {
+  width: 18px;
+  height: 18px;
+
+  right: 82px;
+  top: 160px;
+
+  animation-delay: 2s;
+}
+
+.bubble-5 {
+  width: 11px;
+  height: 11px;
+
+  left: 70px;
+  top: 255px;
+
+  animation-delay: 2.5s;
+}
+
+.bubble-6 {
+  width: 23px;
+  height: 23px;
+
+  right: 40px;
+  top: 245px;
+
+  animation-delay: 0.8s;
+}
+
+@keyframes floatBubble {
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      translateX(0);
+  }
+
+  50% {
+    transform:
+      translateY(-15px)
+      translateX(5px);
+  }
+}
+
+/* ================================
+   RIGHT CONTENT
+================================ */
+
+.right-content {
+  position: absolute;
+
+  right: 35px;
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+
+  width: 145px;
+
+  z-index: 5;
+}
+
+.right-content h3 {
+  font-family:
+    "Space Grotesk",
+    sans-serif;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  line-height: 1.2;
+
+  margin-bottom: 18px;
+
+  color: #fff;
+}
+
+/* ================================
+   BUY BUTTON
+================================ */
+
+.right-content > button {
+  width: 112px;
+  height: 36px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.25);
+
+  border-radius: 30px;
+
+  background:
+    rgba(255, 255, 255, 0.1);
+
+  color: #fff;
+
+  font-family:
+    "Manrope",
+    sans-serif;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(10px);
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.right-content > button:hover {
+  background:
+    rgba(255, 255, 255, 0.2);
+
+  transform:
+    translateY(-3px);
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 950px) {
+  .page {
+    padding: 25px;
+  }
+
+  .showcase {
+    width: 850px;
+    max-width: 100%;
+  }
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 700px) {
+  .page {
+    padding: 15px;
+  }
+
+  .showcase {
+    width: 100%;
+    height: 620px;
+    border-radius: 26px;
+  }
+
+  .brand {
+    top: 22px;
+    left: 24px;
+  }
+
+  .product-area {
+    top: 45%;
+  }
+
+  .left-content {
+    left: 24px;
+    bottom: 30px;
+    width: 180px;
+  }
+
+  .left-content h1 {
+    font-size: 28px;
+  }
+
+  .left-content p {
+    width: 175px;
+    font-size: 9px;
+  }
+
+  .right-content {
+    right: 20px;
+    top: auto;
+    bottom: 32px;
+    width: 105px;
+  }
+
+  .right-content h3 {
+    font-size: 14px;
+  }
+
+  .right-content > button {
+    width: 95px;
+  }
+}
+
+/* ================================
+   SMALL MOBILE
+================================ */
+
+@media (max-width: 480px) {
+  .showcase {
+    height: 590px;
+  }
+
+  .product-area {
+    transform:
+      translate(-50%, -50%)
+      scale(0.9);
+  }
+
+  .left-content h1 {
+    font-size: 25px;
+  }
+
+  .left-content p {
+    display: none;
+  }
+
+  .right-content {
+    bottom: 25px;
+  }
+}
