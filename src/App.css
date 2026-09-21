@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
 
 * {
   margin: 0;
@@ -14,176 +14,149 @@ body,
 }
 
 body {
-  font-family: "Manrope", sans-serif;
-  background: #17100d;
-  color: #fff;
-  overflow-x: hidden;
+  font-family: "Inter", sans-serif;
+  background: #0d0b0b;
+  color: white;
 }
 
-/* ================================
+/* =========================
    PAGE
-================================ */
+========================= */
 
 .page {
-  width: 100%;
   min-height: 100vh;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+
+  padding: 35px;
 
   background:
-    radial-gradient(circle at 50% 50%, #4d291d 0%, transparent 42%),
-    #17100d;
+    radial-gradient(
+      circle at center,
+      #241b18,
+      #0d0b0b 70%
+    );
 }
 
-/* ================================
-   MAIN SHOWCASE
-================================ */
+/* =========================
+   SHOWCASE
+========================= */
 
 .showcase {
   position: relative;
-  width: 900px;
-  height: 500px;
-  overflow: hidden;
-  border-radius: 32px;
-  isolation: isolate;
 
-  display: flex;
-  align-items: center;
+  width: min(1400px, 100%);
+  height: 700px;
+
+  overflow: hidden;
+
+  border-radius: 30px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
 
   box-shadow:
-    0 35px 100px rgba(0, 0, 0, 0.55),
-    inset 0 1px 1px rgba(255, 255, 255, 0.18);
+    0 40px 100px rgba(0, 0, 0, 0.55);
 
-  transition:
-    background 0.7s ease,
-    box-shadow 0.7s ease;
-
-  perspective: 1200px;
+  transition: background 1s ease;
 }
-
-/* ================================
-   GLASS OVERLAY
-================================ */
 
 .showcase::before {
   content: "";
+
   position: absolute;
   inset: 0;
-  z-index: -1;
 
   background:
     linear-gradient(
-      115deg,
-      rgba(255, 255, 255, 0.13),
-      transparent 25%,
-      transparent 70%,
-      rgba(255, 255, 255, 0.05)
+      90deg,
+      rgba(0, 0, 0, 0.4),
+      transparent 45%,
+      rgba(0, 0, 0, 0.35)
     );
+
+  z-index: 1;
 
   pointer-events: none;
 }
 
-/* ================================
-   CENTER GLOW
-================================ */
-
-.showcase::after {
-  content: "";
-
-  position: absolute;
-  width: 430px;
-  height: 430px;
-
-  left: 50%;
-  top: 50%;
-
-  transform: translate(-50%, -50%);
-
-  background: rgba(255, 255, 255, 0.055);
-
-  filter: blur(70px);
-  border-radius: 50%;
-
-  z-index: -1;
-}
-
-/* ================================
+/* =========================
    BRAND
-================================ */
+========================= */
 
 .brand {
   position: absolute;
 
-  top: 28px;
-  left: 34px;
+  top: 38px;
+  left: 55px;
 
   display: flex;
   align-items: center;
-  gap: 8px;
 
-  font-family: "Space Grotesk", sans-serif;
+  gap: 9px;
 
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 18px;
 
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  letter-spacing: 4px;
 
-  color: rgba(255, 255, 255, 0.92);
-
-  z-index: 10;
+  z-index: 20;
 }
 
-.brand svg {
-  filter:
-    drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
-}
-
-/* ================================
+/* =========================
    LEFT CONTENT
-================================ */
+========================= */
 
 .left-content {
   position: absolute;
 
-  left: 38px;
-  bottom: 52px;
+  left: 55px;
+  top: 50%;
 
-  width: 230px;
+  width: 360px;
 
-  z-index: 5;
+  transform: translateY(-50%);
+
+  z-index: 10;
+}
+
+.eyebrow {
+  font-size: 11px;
+
+  letter-spacing: 6px;
+
+  color: rgba(255, 255, 255, 0.65);
+
+  display: block;
+
+  margin-bottom: 24px;
 }
 
 .left-content h1 {
-  font-family: "DM Serif Display", serif;
+  font-family: "Playfair Display", serif;
 
-  font-size: 38px;
-  line-height: 0.98;
-  font-weight: 400;
+  font-size: 72px;
 
-  margin-bottom: 16px;
+  line-height: 0.96;
 
-  color: #fff;
+  letter-spacing: -3px;
 
-  text-shadow:
-    0 5px 25px rgba(0, 0, 0, 0.25);
+  margin-bottom: 30px;
 }
 
 .left-content p {
-  width: 215px;
+  max-width: 340px;
 
-  font-size: 11px;
+  font-size: 16px;
+
   line-height: 1.7;
-  font-weight: 500;
 
-  color: rgba(255, 255, 255, 0.68);
+  color: rgba(255, 255, 255, 0.78);
 }
 
-/* ================================
+/* =========================
    PRODUCT AREA
-================================ */
+========================= */
 
 .product-area {
   position: absolute;
@@ -191,826 +164,737 @@ body {
   left: 50%;
   top: 50%;
 
-  width: 300px;
-  height: 400px;
+  width: 420px;
+  height: 580px;
 
   transform: translate(-50%, -50%);
-
-  z-index: 3;
-}
-
-/* ================================
-   REALISTIC GLASS
-================================ */
-
-.glass-placeholder {
-  position: absolute;
-
-  left: 50%;
-  top: 45px;
-
-  width: 155px;
-  height: 290px;
-
-  transform:
-    translateX(-50%)
-    translateY(0);
-
-  transform-style: preserve-3d;
-
-  overflow: hidden;
-
-  border-radius:
-    22px
-    22px
-    34px
-    34px;
-
-  border:
-    2px solid rgba(255, 255, 255, 0.4);
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.11),
-      rgba(255, 255, 255, 0.025) 35%,
-      rgba(255, 255, 255, 0.07) 70%,
-      rgba(255, 255, 255, 0.015)
-    );
-
-  backdrop-filter: blur(5px);
-
-  box-shadow:
-    inset 7px 0 15px rgba(255, 255, 255, 0.15),
-    inset -8px 0 18px rgba(0, 0, 0, 0.25),
-    inset 0 -10px 20px rgba(255, 255, 255, 0.08),
-    0 25px 50px rgba(0, 0, 0, 0.5);
-
-  cursor: pointer;
-
-  z-index: 4;
-
-  transition:
-    transform 0.15s ease-out;
-}
-
-/* ================================
-   GLASS TOP RIM
-================================ */
-
-.glass-placeholder::before {
-  content: "";
-
-  position: absolute;
-
-  left: 50%;
-  top: 5px;
-
-  width: 128px;
-  height: 15px;
-
-  transform: translateX(-50%);
-
-  border-radius: 50%;
-
-  border:
-    2px solid rgba(255, 255, 255, 0.5);
-
-  background:
-    rgba(255, 255, 255, 0.08);
-
-  box-shadow:
-    inset 0 2px 5px rgba(255, 255, 255, 0.3),
-    0 0 12px rgba(255, 255, 255, 0.08);
-
-  z-index: 30;
-
-  pointer-events: none;
-}
-
-/* ================================
-   LIQUID
-================================ */
-
-.liquid {
-  position: absolute;
-
-  left: 4px;
-  right: 4px;
-  bottom: 4px;
-
-  height: 88%;
-
-  border-radius:
-    16px
-    16px
-    30px
-    30px;
-
-  overflow: hidden;
-
-  z-index: 1;
-
-  animation:
-    liquidMove 4s ease-in-out infinite;
-}
-
-@keyframes liquidMove {
-  0% {
-    transform: scaleX(1);
-  }
-
-  50% {
-    transform: scaleX(1.025);
-  }
-
-  100% {
-    transform: scaleX(1);
-  }
-}
-
-/* ================================
-   LIQUID SURFACE
-================================ */
-
-.liquid::before {
-  content: "";
-
-  position: absolute;
-
-  left: 4%;
-  top: -5px;
-
-  width: 92%;
-  height: 20px;
-
-  border-radius: 50%;
-
-  background:
-    rgba(255, 255, 255, 0.18);
-
-  border:
-    1px solid rgba(255, 255, 255, 0.25);
-
-  box-shadow:
-    inset 0 3px 7px rgba(255, 255, 255, 0.22),
-    0 3px 8px rgba(0, 0, 0, 0.15);
-
-  z-index: 12;
-}
-
-/* ================================
-   CREAM SWIRL
-================================ */
-
-.cream-swirl {
-  position: absolute;
-
-  width: 95px;
-  height: 190px;
-
-  left: 25px;
-  top: 30px;
-
-  border-radius: 50%;
-
-  opacity: 0.35;
-
-  filter: blur(12px);
-
-  transform: rotate(22deg);
-
-  mix-blend-mode: screen;
-
-  animation:
-    swirlMove 5s ease-in-out infinite;
-}
-
-.swirl-two {
-  width: 70px;
-  height: 160px;
-
-  left: 70px;
-  top: 80px;
-
-  opacity: 0.25;
-
-  transform: rotate(-28deg);
-
-  animation-delay: 1s;
-}
-
-@keyframes swirlMove {
-  0% {
-    transform:
-      translateY(0)
-      rotate(22deg);
-  }
-
-  50% {
-    transform:
-      translateY(12px)
-      rotate(30deg);
-  }
-
-  100% {
-    transform:
-      translateY(0)
-      rotate(22deg);
-  }
-}
-
-/* ================================
-   ICE CUBES
-================================ */
-
-.ice {
-  position: absolute;
-
-  width: 42px;
-  height: 35px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.8),
-      rgba(255, 255, 255, 0.15)
-    );
-
-  border:
-    1px solid rgba(255, 255, 255, 0.6);
-
-  border-radius: 8px;
-
-  box-shadow:
-    inset 4px 4px 8px rgba(255, 255, 255, 0.45),
-    0 5px 12px rgba(0, 0, 0, 0.2);
-
-  backdrop-filter: blur(3px);
 
   z-index: 5;
 }
 
-.ice-one {
-  top: 12px;
-  left: 24px;
+/* =========================
+   BOTTLE
+========================= */
 
-  transform: rotate(15deg);
-}
-
-.ice-two {
-  top: 20px;
-  right: 20px;
-
-  width: 38px;
-  height: 32px;
-
-  transform: rotate(-18deg);
-}
-
-.ice-three {
-  top: 38px;
-  left: 57px;
-
-  width: 40px;
-  height: 32px;
-
-  transform: rotate(7deg);
-}
-
-/* ================================
-   INSIDE BUBBLES
-================================ */
-
-.drink-bubble {
+.bottle-container {
   position: absolute;
+
+  left: 50%;
+  top: 20px;
+
+  width: 270px;
+  height: 500px;
+
+  transform:
+    translateX(-50%)
+    rotateX(0)
+    rotateY(0)
+    scale(1);
+
+  transform-style: preserve-3d;
+
+  transition: transform 0.2s ease-out;
+
+  cursor: pointer;
+
+  z-index: 10;
+}
+
+/* =========================
+   LIQUID
+========================= */
+
+.bottle-liquid {
+  position: absolute;
+
+  left: 50%;
+  top: 145px;
+
+  width: 170px;
+  height: 315px;
+
+  transform: translateX(-50%);
+
+  border-radius:
+    10px
+    10px
+    45px
+    45px;
+
+  overflow: hidden;
+
+  opacity: 0.92;
+
+  z-index: 2;
+
+  box-shadow:
+    inset 15px 0 25px rgba(255, 255, 255, 0.12),
+    inset -15px 0 25px rgba(0, 0, 0, 0.15);
+
+  animation:
+    liquidFloat
+    4s
+    ease-in-out
+    infinite;
+}
+
+/* LIQUID TOP */
+
+.bottle-liquid::before {
+  content: "";
+
+  position: absolute;
+
+  top: -5px;
+  left: 8px;
+
+  width: calc(100% - 16px);
+  height: 20px;
 
   border-radius: 50%;
 
-  border:
-    1px solid rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.2);
 
-  background:
-    rgba(255, 255, 255, 0.1);
-
-  box-shadow:
-    inset 2px 2px 4px rgba(255, 255, 255, 0.35);
-
-  z-index: 6;
-
-  animation:
-    drinkBubble 3s ease-in-out infinite;
+  filter: blur(3px);
 }
 
-.drink-bubble-one {
-  width: 7px;
-  height: 7px;
+/* =========================
+   LIQUID TOP EXTRA
+========================= */
 
-  left: 25px;
-  bottom: 45px;
-}
-
-.drink-bubble-two {
-  width: 5px;
-  height: 5px;
-
-  left: 48px;
-  bottom: 75px;
-
-  animation-delay: 0.6s;
-}
-
-.drink-bubble-three {
-  width: 9px;
-  height: 9px;
-
-  right: 30px;
-  bottom: 55px;
-
-  animation-delay: 1s;
-}
-
-.drink-bubble-four {
-  width: 5px;
-  height: 5px;
-
-  right: 48px;
-  bottom: 105px;
-
-  animation-delay: 1.4s;
-}
-
-.drink-bubble-five {
-  width: 6px;
-  height: 6px;
-
-  left: 70px;
-  bottom: 30px;
-
-  animation-delay: 2s;
-}
-
-@keyframes drinkBubble {
-  0% {
-    transform: translateY(10px);
-    opacity: 0.2;
-  }
-
-  50% {
-    transform: translateY(-12px);
-    opacity: 0.8;
-  }
-
-  100% {
-    transform: translateY(-25px);
-    opacity: 0;
-  }
-}
-
-/* ================================
-   GLASS SHINE
-================================ */
-
-.glass-shine {
+.liquid-top {
   position: absolute;
 
-  top: 8px;
-  left: 13px;
+  top: 0;
+  left: 8px;
 
-  width: 20px;
-  height: 250px;
+  width: calc(100% - 16px);
+  height: 18px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(255, 255, 255, 0.25),
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+/* =========================
+   LIQUID SHINE
+========================= */
+
+.liquid-shine {
+  position: absolute;
+
+  left: 22px;
+  top: 25px;
+
+  width: 25px;
+  height: 240px;
 
   border-radius: 50%;
 
   background:
     linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.7),
-      rgba(255, 255, 255, 0.1),
+      180deg,
+      rgba(255, 255, 255, 0.5),
       transparent
     );
 
-  filter: blur(2px);
+  filter: blur(7px);
 
-  opacity: 0.75;
-
-  transform: rotate(4deg);
-
-  z-index: 10;
-
-  pointer-events: none;
+  opacity: 0.5;
 }
 
-/* ================================
-   SECOND REFLECTION
-================================ */
+/* =========================
+   LIQUID BUBBLES
+========================= */
 
-.glass-reflection {
+.liquid-bubble {
   position: absolute;
 
-  top: 15px;
-  right: 12px;
+  border-radius: 50%;
 
+  border:
+    1px solid rgba(255, 255, 255, 0.35);
+
+  background:
+    rgba(255, 255, 255, 0.12);
+
+  animation:
+    liquidBubble
+    3s
+    ease-in-out
+    infinite;
+}
+
+.liquid-bubble-1 {
   width: 8px;
-  height: 190px;
+  height: 8px;
+
+  left: 40px;
+  bottom: 70px;
+}
+
+.liquid-bubble-2 {
+  width: 6px;
+  height: 6px;
+
+  right: 40px;
+  bottom: 130px;
+
+  animation-delay: 1s;
+}
+
+.liquid-bubble-3 {
+  width: 10px;
+  height: 10px;
+
+  left: 90px;
+  bottom: 190px;
+
+  animation-delay: 1.5s;
+}
+
+/* =========================
+   GLASS BOTTLE
+========================= */
+
+.bottle-image {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  z-index: 5;
+
+  pointer-events: none;
+
+  user-select: none;
+
+  /*
+    Transparent glass effect
+  */
+
+  opacity: 0.28;
+
+  filter:
+    drop-shadow(
+      0 25px 25px rgba(0, 0, 0, 0.45)
+    )
+    drop-shadow(
+      0 0 15px rgba(255, 255, 255, 0.22)
+    );
+}
+
+/* =========================
+   GLASS HIGHLIGHT
+========================= */
+
+.glass-highlight {
+  position: absolute;
+
+  left: 76px;
+  top: 105px;
+
+  width: 17px;
+  height: 300px;
 
   border-radius: 50%;
 
   background:
-    rgba(255, 255, 255, 0.25);
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.65),
+      rgba(255, 255, 255, 0.12),
+      transparent
+    );
 
-  filter: blur(3px);
+  filter: blur(5px);
 
-  z-index: 10;
+  opacity: 0.65;
+
+  z-index: 7;
 
   pointer-events: none;
 }
 
-/* ================================
-   NOVA LOGO
-================================ */
+/* =========================
+   BOTTLE GLOW
+========================= */
 
-.glass-logo {
+.bottle-glow {
   position: absolute;
 
   left: 50%;
-  top: 52%;
+  top: 55%;
+
+  width: 230px;
+  height: 350px;
 
   transform:
     translate(-50%, -50%);
 
-  color:
-    rgba(255, 255, 255, 0.95);
+  border-radius: 50%;
 
-  font-family:
-    "Space Grotesk",
-    sans-serif;
+  filter: blur(70px);
 
-  font-size: 20px;
-  font-weight: 700;
+  opacity: 0.3;
 
-  letter-spacing: 5px;
-
-  text-shadow:
-    0 0 10px rgba(255, 255, 255, 0.5),
-    0 0 20px rgba(255, 255, 255, 0.25);
-
-  z-index: 20;
+  z-index: 1;
 
   pointer-events: none;
 }
 
-/* ================================
-   PRODUCT ENTRY
-================================ */
+/* =========================
+   BOTTLE ENTRY
+========================= */
 
-.glass-enter {
+.bottle-enter {
   animation:
-    glassFromTop 0.8s
-    cubic-bezier(0.22, 1, 0.36, 1);
+    bottleEnter
+    0.9s
+    cubic-bezier(.22, 1, .36, 1);
 }
 
-@keyframes glassFromTop {
-  0% {
+@keyframes bottleEnter {
+  from {
     opacity: 0;
 
     transform:
       translateX(-50%)
-      translateY(-55px)
-      scale(0.9)
-      rotateX(-10deg);
+      translateY(-60px)
+      scale(0.8);
   }
 
-  55% {
-    opacity: 1;
-
-    transform:
-      translateX(-50%)
-      translateY(7px)
-      scale(1.03)
-      rotateX(3deg);
-  }
-
-  100% {
+  to {
     opacity: 1;
 
     transform:
       translateX(-50%)
       translateY(0)
-      scale(1)
-      rotateX(0deg);
+      scale(1);
   }
 }
 
-/* ================================
+/* =========================
+   LIQUID FLOAT
+========================= */
+
+@keyframes liquidFloat {
+  0%,
+  100% {
+    transform:
+      translateX(-50%)
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateX(-50%)
+      translateY(-3px);
+  }
+}
+
+/* =========================
+   LIQUID BUBBLE ANIMATION
+========================= */
+
+@keyframes liquidBubble {
+  0%,
+  100% {
+    transform: translateY(0);
+
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: translateY(-20px);
+
+    opacity: 0.9;
+  }
+}
+
+/* =========================
    PRICE
-================================ */
+========================= */
 
 .price {
   position: absolute;
 
   left: 50%;
-  top: 350px;
+  bottom: 5px;
 
   transform:
     translateX(-50%);
 
   font-family:
-    "Space Grotesk",
-    sans-serif;
+    "Playfair Display",
+    serif;
 
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 38px;
 
-  letter-spacing: 1px;
-
-  color: #fff;
-
-  text-shadow:
-    0 4px 15px rgba(0, 0, 0, 0.3);
-
-  white-space: nowrap;
+  z-index: 15;
 }
 
-/* ================================
-   OUTSIDE BUBBLES
-================================ */
+/* =========================
+   RIGHT CONTENT
+========================= */
+
+.right-content {
+  position: absolute;
+
+  right: 60px;
+  top: 50%;
+
+  width: 230px;
+
+  transform:
+    translateY(-50%);
+
+  z-index: 10;
+}
+
+.product-count {
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  margin-bottom: 35px;
+
+  font-size: 12px;
+}
+
+.product-count div {
+  width: 90px;
+  height: 1px;
+
+  background:
+    rgba(255, 255, 255, 0.55);
+}
+
+.right-content h3 {
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size: 43px;
+
+  line-height: 1.05;
+
+  margin-bottom: 35px;
+}
+
+.right-content button {
+  display: flex;
+
+  align-items: center;
+
+  gap: 35px;
+
+  padding: 16px 28px;
+
+  border-radius: 50px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.45);
+
+  background:
+    rgba(255, 255, 255, 0.04);
+
+  color: white;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.right-content button:hover {
+  background:
+    rgba(255, 255, 255, 0.12);
+
+  transform:
+    translateY(-3px);
+}
+
+/* =========================
+   OUTER BUBBLES
+========================= */
 
 .bubble {
   position: absolute;
 
   border-radius: 50%;
 
+  border:
+    1px solid rgba(255, 255, 255, 0.35);
+
   background:
     radial-gradient(
       circle at 30% 25%,
-      rgba(255, 255, 255, 0.85),
-      rgba(255, 255, 255, 0.18) 35%,
-      rgba(255, 255, 255, 0.04) 70%,
-      transparent 72%
+      rgba(255, 255, 255, 0.4),
+      transparent 65%
     );
 
-  border:
-    1px solid rgba(255, 255, 255, 0.16);
-
-  backdrop-filter: blur(4px);
+  z-index: 4;
 
   animation:
-    floatBubble 5s ease-in-out infinite;
-
-  opacity: 0.75;
+    floatBubble
+    4s
+    ease-in-out
+    infinite;
 }
 
 .bubble-1 {
-  width: 26px;
-  height: 26px;
+  width: 55px;
+  height: 55px;
 
-  left: 38px;
-  top: 80px;
-
-  animation-delay: 0s;
+  left: 45px;
+  top: 150px;
 }
 
 .bubble-2 {
-  width: 15px;
-  height: 15px;
+  width: 28px;
+  height: 28px;
 
-  left: 92px;
-  top: 175px;
+  left: 110px;
+  top: 300px;
 
-  animation-delay: 1s;
+  animation-delay: 0.7s;
 }
 
 .bubble-3 {
-  width: 34px;
-  height: 34px;
+  width: 65px;
+  height: 65px;
 
-  right: 48px;
-  top: 75px;
+  right: 40px;
+  top: 130px;
 
-  animation-delay: 1.5s;
+  animation-delay: 1.2s;
 }
 
 .bubble-4 {
-  width: 18px;
-  height: 18px;
+  width: 35px;
+  height: 35px;
 
-  right: 82px;
-  top: 160px;
+  right: 65px;
+  top: 330px;
 
-  animation-delay: 2s;
+  animation-delay: 1.8s;
 }
 
 .bubble-5 {
-  width: 11px;
-  height: 11px;
+  width: 18px;
+  height: 18px;
 
-  left: 70px;
-  top: 255px;
+  left: 75px;
+  bottom: 100px;
 
-  animation-delay: 2.5s;
+  animation-delay: 2.2s;
 }
 
 .bubble-6 {
-  width: 23px;
-  height: 23px;
+  width: 30px;
+  height: 30px;
 
-  right: 40px;
-  top: 245px;
+  right: 95px;
+  bottom: 90px;
 
-  animation-delay: 0.8s;
+  animation-delay: 2.7s;
 }
 
 @keyframes floatBubble {
   0%,
   100% {
     transform:
-      translateY(0)
-      translateX(0);
+      translateY(0);
   }
 
   50% {
     transform:
-      translateY(-15px)
-      translateX(5px);
+      translateY(-22px);
   }
 }
 
-/* ================================
-   RIGHT CONTENT
-================================ */
+/* =========================
+   BOTTOM
+========================= */
 
-.right-content {
+.bottom-line {
   position: absolute;
 
-  right: 35px;
-  top: 50%;
+  left: 55px;
+  right: 55px;
+  bottom: 32px;
 
-  transform:
-    translateY(-50%);
+  display: flex;
 
-  width: 145px;
+  align-items: center;
 
-  z-index: 5;
+  justify-content: space-between;
+
+  z-index: 20;
 }
 
-.right-content h3 {
-  font-family:
-    "Space Grotesk",
-    sans-serif;
-
-  font-size: 18px;
-  font-weight: 700;
-
-  line-height: 1.2;
-
-  margin-bottom: 18px;
-
-  color: #fff;
-}
-
-/* ================================
-   BUY BUTTON
-================================ */
-
-.right-content > button {
-  width: 112px;
-  height: 36px;
-
-  border:
-    1px solid rgba(255, 255, 255, 0.25);
-
-  border-radius: 30px;
-
-  background:
-    rgba(255, 255, 255, 0.1);
-
-  color: #fff;
-
-  font-family:
-    "Manrope",
-    sans-serif;
-
+.bottom-line > span {
   font-size: 10px;
-  font-weight: 700;
 
-  letter-spacing: 1px;
+  letter-spacing: 4px;
 
-  cursor: pointer;
-
-  backdrop-filter: blur(10px);
-
-  transition:
-    background 0.3s ease,
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  color:
+    rgba(255, 255, 255, 0.55);
 }
 
-.right-content > button:hover {
+.dots {
+  display: flex;
+
+  gap: 10px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
   background:
-    rgba(255, 255, 255, 0.2);
+    rgba(255, 255, 255, 0.25);
 
-  transform:
-    translateY(-3px);
-
-  box-shadow:
-    0 10px 25px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
 }
 
-/* ================================
+.dot.active {
+  width: 25px;
+
+  border-radius: 10px;
+
+  background:
+    rgba(255, 255, 255, 0.9);
+}
+
+/* =========================
    TABLET
-================================ */
+========================= */
 
-@media (max-width: 950px) {
-  .page {
-    padding: 25px;
-  }
-
-  .showcase {
-    width: 850px;
-    max-width: 100%;
-  }
-}
-
-/* ================================
-   MOBILE
-================================ */
-
-@media (max-width: 700px) {
-  .page {
-    padding: 15px;
-  }
-
-  .showcase {
-    width: 100%;
-    height: 620px;
-    border-radius: 26px;
-  }
-
-  .brand {
-    top: 22px;
-    left: 24px;
-  }
-
-  .product-area {
-    top: 45%;
-  }
-
+@media (max-width: 1000px) {
   .left-content {
-    left: 24px;
-    bottom: 30px;
+    left: 35px;
+
+    width: 280px;
+  }
+
+  .left-content h1 {
+    font-size: 55px;
+  }
+
+  .right-content {
+    right: 30px;
+
     width: 180px;
   }
 
-  .left-content h1 {
-    font-size: 28px;
-  }
-
-  .left-content p {
-    width: 175px;
-    font-size: 9px;
-  }
-
-  .right-content {
-    right: 20px;
-    top: auto;
-    bottom: 32px;
-    width: 105px;
-  }
-
   .right-content h3 {
-    font-size: 14px;
-  }
-
-  .right-content > button {
-    width: 95px;
+    font-size: 32px;
   }
 }
 
-/* ================================
-   SMALL MOBILE
-================================ */
+/* =========================
+   MOBILE
+========================= */
 
-@media (max-width: 480px) {
-  .showcase {
-    height: 590px;
+@media (max-width: 750px) {
+  .page {
+    padding: 12px;
   }
 
-  .product-area {
-    transform:
-      translate(-50%, -50%)
-      scale(0.9);
+  .showcase {
+    height: 850px;
+  }
+
+  .brand {
+    left: 25px;
+    top: 25px;
+  }
+
+  .left-content {
+    top: 105px;
+
+    left: 25px;
+    right: 25px;
+
+    width: auto;
+
+    transform: none;
+
+    text-align: center;
   }
 
   .left-content h1 {
-    font-size: 25px;
+    font-size: 47px;
   }
 
   .left-content p {
-    display: none;
+    margin: auto;
+  }
+
+  .product-area {
+    top: 490px;
+
+    transform:
+      translate(-50%, -50%)
+      scale(0.78);
   }
 
   .right-content {
-    bottom: 25px;
+    top: auto;
+
+    bottom: 85px;
+
+    left: 50%;
+    right: auto;
+
+    transform:
+      translateX(-50%);
+
+    width: auto;
+
+    text-align: center;
+  }
+
+  .product-count {
+    justify-content: center;
+
+    margin-bottom: 12px;
+  }
+
+  .right-content h3 {
+    font-size: 30px;
+
+    margin-bottom: 15px;
+  }
+
+  .right-content button {
+    margin: auto;
+  }
+
+  .bottom-line {
+    left: 25px;
+    right: 25px;
+  }
+
+  .bottom-line > span {
+    display: none;
   }
 }

@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { Sparkles } from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
 import "./App.css";
+
+const bottlePNG =
+  "https://pngimg.com/uploads/bottle/bottle_PNG2942.png";
 
 const products = [
   {
@@ -11,8 +14,8 @@ const products = [
     price: "$25.50",
     color: "#3b2118",
     glow: "#b96f42",
-    liquid: "#6b351d",
-    cream: "#e5b17b",
+    liquid: "#7a3f22",
+    light: "#d28a55",
   },
   {
     name: "Strawberry Cream",
@@ -22,8 +25,8 @@ const products = [
     price: "$27.50",
     color: "#641d32",
     glow: "#ef6684",
-    liquid: "#c83d62",
-    cream: "#ffb0c0",
+    liquid: "#d83d68",
+    light: "#ff9eb4",
   },
   {
     name: "Blueberry Bliss",
@@ -34,7 +37,7 @@ const products = [
     color: "#20295c",
     glow: "#647cff",
     liquid: "#4058c9",
-    cream: "#aebcff",
+    light: "#91a2ff",
   },
   {
     name: "Mint Fresh",
@@ -44,8 +47,8 @@ const products = [
     price: "$23.50",
     color: "#16463f",
     glow: "#48d5b3",
-    liquid: "#258d79",
-    cream: "#a2ead8",
+    liquid: "#239a80",
+    light: "#83e6d0",
   },
   {
     name: "Mango Cream",
@@ -55,8 +58,8 @@ const products = [
     price: "$26.50",
     color: "#6b3e12",
     glow: "#ffb52e",
-    liquid: "#d47c17",
-    cream: "#ffe08a",
+    liquid: "#f49a16",
+    light: "#ffd66b",
   },
   {
     name: "Lavender Milk",
@@ -66,18 +69,17 @@ const products = [
     price: "$30.50",
     color: "#43285f",
     glow: "#b778e8",
-    liquid: "#8151a8",
-    cream: "#dfbaf5",
+    liquid: "#8651b4",
+    light: "#d4a8ef",
   },
 ];
 
 function App() {
   const [activeProduct, setActiveProduct] = useState(0);
-  const glassRef = useRef(null);
+  const bottleRef = useRef(null);
 
   const product = products[activeProduct];
 
-  /* AUTOMATIC PRODUCT CHANGE */
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveProduct((current) => (current + 1) % products.length);
@@ -86,35 +88,35 @@ function App() {
     return () => clearInterval(timer);
   }, []);
 
-  /* MOUSE TILT */
   const handleMouseMove = (e) => {
-    const glass = glassRef.current;
+    const bottle = bottleRef.current;
 
-    if (!glass) return;
+    if (!bottle) return;
 
-    const rect = glass.getBoundingClientRect();
+    const rect = bottle.getBoundingClientRect();
 
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    const rotateY = (x / rect.width - 0.5) * 14;
-    const rotateX = (y / rect.height - 0.5) * -14;
+    const rotateY = (x / rect.width - 0.5) * 10;
+    const rotateX = (y / rect.height - 0.5) * -10;
 
-    glass.style.transform = `
+    bottle.style.transform = `
       translateX(-50%)
       rotateX(${rotateX}deg)
       rotateY(${rotateY}deg)
+      scale(1.03)
     `;
   };
 
-  /* RESET TILT */
   const handleMouseLeave = () => {
-    if (!glassRef.current) return;
+    if (!bottleRef.current) return;
 
-    glassRef.current.style.transform = `
+    bottleRef.current.style.transform = `
       translateX(-50%)
       rotateX(0deg)
       rotateY(0deg)
+      scale(1)
     `;
   };
 
@@ -135,18 +137,20 @@ function App() {
       >
         {/* BRAND */}
         <div className="brand">
-          <Sparkles size={18} strokeWidth={1.8} />
-          <span>NovaBlend</span>
+          <Sparkles size={18} />
+          <span>NOVABLEND</span>
         </div>
 
-        {/* LEFT CONTENT */}
+        {/* LEFT */}
         <div className="left-content">
+          <span className="eyebrow">PREMIUM BLEND</span>
+
           <h1>{product.title}</h1>
 
           <p>{product.description}</p>
         </div>
 
-        {/* CENTER PRODUCT */}
+        {/* CENTER */}
         <div className="product-area">
 
           {/* FLOATING BUBBLES */}
@@ -157,81 +161,94 @@ function App() {
           <div className="bubble bubble-5" />
           <div className="bubble bubble-6" />
 
-          {/* GLASS */}
+          {/* BOTTLE */}
           <div
             key={activeProduct}
-            ref={glassRef}
-            className="glass-placeholder glass-enter"
+            ref={bottleRef}
+            className="bottle-container bottle-enter"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
           >
-            {/* LIQUID */}
+            {/* LIQUID INSIDE BOTTLE */}
             <div
-              className="liquid"
+              className="bottle-liquid"
               style={{
                 background: `
-                  radial-gradient(
-                    ellipse at 50% 0%,
-                    ${product.cream} 0%,
-                    transparent 25%
-                  ),
                   linear-gradient(
-                    115deg,
+                    90deg,
                     ${product.liquid},
-                    ${product.cream},
-                    ${product.liquid},
+                    ${product.light},
                     ${product.liquid}
                   )
                 `,
               }}
             >
-              {/* CREAM SWIRL */}
-              <div
-                className="cream-swirl"
-                style={{
-                  background: product.cream,
-                }}
-              />
+              <div className="liquid-top" />
 
-              <div
-                className="cream-swirl swirl-two"
-                style={{
-                  background: product.cream,
-                }}
-              />
+              <div className="liquid-shine" />
 
-              {/* ICE CUBES */}
-              <div className="ice ice-one" />
-              <div className="ice ice-two" />
-              <div className="ice ice-three" />
-
-              {/* INSIDE BUBBLES */}
-              <div className="drink-bubble drink-bubble-one" />
-              <div className="drink-bubble drink-bubble-two" />
-              <div className="drink-bubble drink-bubble-three" />
-              <div className="drink-bubble drink-bubble-four" />
-              <div className="drink-bubble drink-bubble-five" />
+              <div className="liquid-bubble liquid-bubble-1" />
+              <div className="liquid-bubble liquid-bubble-2" />
+              <div className="liquid-bubble liquid-bubble-3" />
             </div>
 
-            {/* GLASS SHINE */}
-            <div className="glass-shine" />
+            {/* GLASS BOTTLE */}
+            <img
+              src={bottlePNG}
+              alt={product.name}
+              className="bottle-image"
+            />
 
             {/* GLASS REFLECTION */}
-            <div className="glass-reflection" />
+            <div className="glass-highlight" />
 
-            {/* BRAND ON GLASS */}
-            <div className="glass-logo">NOVA</div>
+            {/* BOTTLE GLOW */}
+            <div
+              className="bottle-glow"
+              style={{
+                background: product.glow,
+              }}
+            />
           </div>
 
           {/* PRICE */}
           <div className="price">{product.price}</div>
         </div>
 
-        {/* RIGHT CONTENT */}
+        {/* RIGHT */}
         <div className="right-content">
+          <div className="product-count">
+            <span>
+              {String(activeProduct + 1).padStart(2, "0")}
+            </span>
+
+            <div />
+
+            <span>06</span>
+          </div>
+
           <h3>{product.name}</h3>
 
-          <button>Buy Now</button>
+          <button>
+            Buy Now
+            <ArrowRight size={17} />
+          </button>
+        </div>
+
+        {/* BOTTOM */}
+        <div className="bottom-line">
+          <span>CRAFTED FOR YOUR MOMENT</span>
+
+          <div className="dots">
+            {products.map((_, index) => (
+              <span
+                key={index}
+                className={
+                  index === activeProduct ? "dot active" : "dot"
+                }
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ export const products = [
     description:
       "Smooth, rich and delicious coffee made with carefully selected ingredients.",
     price: "$25.50",
+    image: "PNG_URL_HERE",
     color: "#3b2118",
     glow: "#b96f42",
     glassColor: "#713b22",
@@ -17,6 +18,7 @@ export const products = [
     description:
       "Sweet strawberry flavour blended with a soft creamy and refreshing finish.",
     price: "$27.50",
+    image: "PNG_URL_HERE",
     color: "#641d32",
     glow: "#ef6684",
     glassColor: "#c83d62",
@@ -29,6 +31,7 @@ export const products = [
     description:
       "A rich blueberry drink with a smooth, refreshing and fruity taste.",
     price: "$29.50",
+    image: "PNG_URL_HERE",
     color: "#20295c",
     glow: "#647cff",
     glassColor: "#4058c9",
@@ -41,6 +44,7 @@ export const products = [
     description:
       "A cool mint flavour with a refreshing taste and creamy smooth texture.",
     price: "$23.50",
+    image: "PNG_URL_HERE",
     color: "#16463f",
     glow: "#48d5b3",
     glassColor: "#258d79",
@@ -53,6 +57,7 @@ export const products = [
     description:
       "Sweet tropical mango blended into a creamy and delicious drink.",
     price: "$26.50",
+    image: "PNG_URL_HERE",
     color: "#6b3e12",
     glow: "#ffb52e",
     glassColor: "#d47c17",
@@ -65,6 +70,7 @@ export const products = [
     description:
       "A soft lavender flavour with a delicate creamy and relaxing finish.",
     price: "$30.50",
+    image: "PNG_URL_HERE",
     color: "#43285f",
     glow: "#b778e8",
     glassColor: "#8151a8",
