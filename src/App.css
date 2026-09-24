@@ -10,13 +10,18 @@ html,
 body,
 #root {
   width: 100%;
-  min-height: 100%;
+  height: 100%;
+}
+
+html {
+  overflow: hidden;
 }
 
 body {
   font-family: "Inter", sans-serif;
   background: #0d0b0b;
   color: white;
+  overflow: hidden;
 }
 
 /* =========================
@@ -24,20 +29,9 @@ body {
 ========================= */
 
 .page {
-  min-height: 100vh;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 35px;
-
-  background:
-    radial-gradient(
-      circle at center,
-      #241b18,
-      #0d0b0b 70%
-    );
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* =========================
@@ -47,36 +41,74 @@ body {
 .showcase {
   position: relative;
 
-  width: min(1400px, 100%);
-  height: 700px;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
 
   overflow: hidden;
 
-  border-radius: 30px;
+  border: none;
+  border-radius: 0;
 
-  border: 1px solid rgba(255, 255, 255, 0.12);
-
-  box-shadow:
-    0 40px 100px rgba(0, 0, 0, 0.55);
+  box-shadow: none;
 
   transition: background 1s ease;
 }
+
+/* =========================
+   DARK OVERLAY
+========================= */
 
 .showcase::before {
   content: "";
 
   position: absolute;
+
   inset: 0;
 
   background:
     linear-gradient(
       90deg,
-      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.48),
       transparent 45%,
-      rgba(0, 0, 0, 0.35)
+      rgba(0, 0, 0, 0.4)
     );
 
   z-index: 1;
+
+  pointer-events: none;
+}
+
+/* =========================
+   CENTER LIGHT
+========================= */
+
+.showcase::after {
+  content: "";
+
+  position: absolute;
+
+  width: 650px;
+  height: 650px;
+
+  left: 50%;
+  top: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.08),
+      transparent 68%
+    );
+
+  filter: blur(25px);
+
+  z-index: 2;
 
   pointer-events: none;
 }
@@ -88,19 +120,28 @@ body {
 .brand {
   position: absolute;
 
-  top: 38px;
-  left: 55px;
+  top: 32px;
+  left: 6%;
 
   display: flex;
   align-items: center;
 
   gap: 9px;
 
-  font-size: 18px;
+  font-size: 16px;
 
-  letter-spacing: 4px;
+  font-weight: 700;
 
-  z-index: 20;
+  letter-spacing: 5px;
+
+  z-index: 30;
+}
+
+.brand svg {
+  filter:
+    drop-shadow(
+      0 0 10px rgba(255, 255, 255, 0.65)
+    );
 }
 
 /* =========================
@@ -110,48 +151,62 @@ body {
 .left-content {
   position: absolute;
 
-  left: 55px;
+  left: 6%;
+
   top: 50%;
 
   width: 360px;
 
-  transform: translateY(-50%);
+  transform:
+    translateY(-50%);
 
-  z-index: 10;
+  z-index: 20;
 }
 
 .eyebrow {
-  font-size: 11px;
+  display: block;
+
+  margin-bottom: 22px;
+
+  font-size: 10px;
+
+  font-weight: 700;
 
   letter-spacing: 6px;
 
-  color: rgba(255, 255, 255, 0.65);
-
-  display: block;
-
-  margin-bottom: 24px;
+  color:
+    rgba(255, 255, 255, 0.65);
 }
 
 .left-content h1 {
-  font-family: "Playfair Display", serif;
+  font-family:
+    "Playfair Display",
+    serif;
 
-  font-size: 72px;
+  font-size: clamp(
+    52px,
+    6vw,
+    82px
+  );
 
   line-height: 0.96;
 
+  font-weight: 600;
+
   letter-spacing: -3px;
 
-  margin-bottom: 30px;
+  margin-bottom: 28px;
 }
 
 .left-content p {
-  max-width: 340px;
+  max-width: 350px;
 
-  font-size: 16px;
+  font-size: 14px;
 
-  line-height: 1.7;
+  line-height: 1.8;
 
-  color: rgba(255, 255, 255, 0.78);
+  color:
+    rgba(255, 255, 255, 0.72);
 }
 
 /* =========================
@@ -164,12 +219,13 @@ body {
   left: 50%;
   top: 50%;
 
-  width: 420px;
-  height: 580px;
+  width: 430px;
+  height: 600px;
 
-  transform: translate(-50%, -50%);
+  transform:
+    translate(-50%, -50%);
 
-  z-index: 5;
+  z-index: 10;
 }
 
 /* =========================
@@ -180,24 +236,27 @@ body {
   position: absolute;
 
   left: 50%;
-  top: 20px;
+  top: 15px;
 
-  width: 270px;
-  height: 500px;
+  width: 280px;
+  height: 510px;
 
   transform:
     translateX(-50%)
-    rotateX(0)
-    rotateY(0)
+    rotateX(0deg)
+    rotateY(0deg)
     scale(1);
 
   transform-style: preserve-3d;
 
-  transition: transform 0.2s ease-out;
+  transition:
+    transform 0.15s ease-out;
 
   cursor: pointer;
 
-  z-index: 10;
+  z-index: 15;
+
+  will-change: transform;
 }
 
 /* =========================
@@ -210,10 +269,11 @@ body {
   left: 50%;
   top: 145px;
 
-  width: 170px;
-  height: 315px;
+  width: 172px;
+  height: 318px;
 
-  transform: translateX(-50%);
+  transform:
+    translateX(-50%);
 
   border-radius:
     10px
@@ -228,17 +288,19 @@ body {
   z-index: 2;
 
   box-shadow:
-    inset 15px 0 25px rgba(255, 255, 255, 0.12),
-    inset -15px 0 25px rgba(0, 0, 0, 0.15);
+    inset 15px 0 25px
+      rgba(255, 255, 255, 0.12),
+    inset -15px 0 25px
+      rgba(0, 0, 0, 0.15);
 
   animation:
-    liquidFloat
-    4s
-    ease-in-out
-    infinite;
+    liquidFloat 4s
+    ease-in-out infinite;
 }
 
-/* LIQUID TOP */
+/* =========================
+   LIQUID TOP
+========================= */
 
 .bottle-liquid::before {
   content: "";
@@ -253,14 +315,11 @@ body {
 
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.2);
+  background:
+    rgba(255, 255, 255, 0.2);
 
   filter: blur(3px);
 }
-
-/* =========================
-   LIQUID TOP EXTRA
-========================= */
 
 .liquid-top {
   position: absolute;
@@ -326,10 +385,8 @@ body {
     rgba(255, 255, 255, 0.12);
 
   animation:
-    liquidBubble
-    3s
-    ease-in-out
-    infinite;
+    liquidBubble 3s
+    ease-in-out infinite;
 }
 
 .liquid-bubble-1 {
@@ -379,10 +436,6 @@ body {
   pointer-events: none;
 
   user-select: none;
-
-  /*
-    Transparent glass effect
-  */
 
   opacity: 0.28;
 
@@ -437,8 +490,8 @@ body {
   left: 50%;
   top: 55%;
 
-  width: 230px;
-  height: 350px;
+  width: 240px;
+  height: 360px;
 
   transform:
     translate(-50%, -50%);
@@ -452,6 +505,9 @@ body {
   z-index: 1;
 
   pointer-events: none;
+
+  transition:
+    background 0.7s ease;
 }
 
 /* =========================
@@ -460,8 +516,7 @@ body {
 
 .bottle-enter {
   animation:
-    bottleEnter
-    0.9s
+    bottleEnter 0.9s
     cubic-bezier(.22, 1, .36, 1);
 }
 
@@ -505,19 +560,21 @@ body {
 }
 
 /* =========================
-   LIQUID BUBBLE ANIMATION
+   LIQUID BUBBLE
 ========================= */
 
 @keyframes liquidBubble {
   0%,
   100% {
-    transform: translateY(0);
+    transform:
+      translateY(0);
 
     opacity: 0.4;
   }
 
   50% {
-    transform: translateY(-20px);
+    transform:
+      translateY(-20px);
 
     opacity: 0.9;
   }
@@ -540,9 +597,11 @@ body {
     "Playfair Display",
     serif;
 
-  font-size: 38px;
+  font-size: 36px;
 
-  z-index: 15;
+  z-index: 20;
+
+  white-space: nowrap;
 }
 
 /* =========================
@@ -552,7 +611,8 @@ body {
 .right-content {
   position: absolute;
 
-  right: 60px;
+  right: 6%;
+
   top: 50%;
 
   width: 230px;
@@ -560,7 +620,7 @@ body {
   transform:
     translateY(-50%);
 
-  z-index: 10;
+  z-index: 20;
 }
 
 .product-count {
@@ -570,17 +630,23 @@ body {
 
   gap: 16px;
 
-  margin-bottom: 35px;
+  margin-bottom: 32px;
 
-  font-size: 12px;
+  font-size: 11px;
+
+  font-weight: 600;
+
+  letter-spacing: 2px;
+
+  opacity: 0.6;
 }
 
 .product-count div {
-  width: 90px;
+  width: 80px;
   height: 1px;
 
   background:
-    rgba(255, 255, 255, 0.55);
+    rgba(255, 255, 255, 0.5);
 }
 
 .right-content h3 {
@@ -588,11 +654,13 @@ body {
     "Playfair Display",
     serif;
 
-  font-size: 43px;
+  font-size: 42px;
 
   line-height: 1.05;
 
-  margin-bottom: 35px;
+  font-weight: 600;
+
+  margin-bottom: 30px;
 }
 
 .right-content button {
@@ -602,28 +670,35 @@ body {
 
   gap: 35px;
 
-  padding: 16px 28px;
+  padding:
+    15px 25px;
 
   border-radius: 50px;
 
   border:
-    1px solid rgba(255, 255, 255, 0.45);
+    1px solid rgba(255, 255, 255, 0.4);
 
   background:
-    rgba(255, 255, 255, 0.04);
+    rgba(255, 255, 255, 0.05);
 
   color: white;
 
-  font-size: 15px;
+  font-family: "Inter", sans-serif;
+
+  font-size: 13px;
 
   cursor: pointer;
 
-  transition: 0.3s;
+  backdrop-filter: blur(12px);
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
 }
 
 .right-content button:hover {
   background:
-    rgba(255, 255, 255, 0.12);
+    rgba(255, 255, 255, 0.13);
 
   transform:
     translateY(-3px);
@@ -639,7 +714,7 @@ body {
   border-radius: 50%;
 
   border:
-    1px solid rgba(255, 255, 255, 0.35);
+    1px solid rgba(255, 255, 255, 0.3);
 
   background:
     radial-gradient(
@@ -648,13 +723,13 @@ body {
       transparent 65%
     );
 
-  z-index: 4;
+  z-index: 8;
 
   animation:
-    floatBubble
-    4s
-    ease-in-out
-    infinite;
+    floatBubble 4s
+    ease-in-out infinite;
+
+  pointer-events: none;
 }
 
 .bubble-1 {
@@ -735,9 +810,9 @@ body {
 .bottom-line {
   position: absolute;
 
-  left: 55px;
-  right: 55px;
-  bottom: 32px;
+  left: 6%;
+  right: 6%;
+  bottom: 25px;
 
   display: flex;
 
@@ -745,34 +820,35 @@ body {
 
   justify-content: space-between;
 
-  z-index: 20;
+  z-index: 30;
 }
 
 .bottom-line > span {
-  font-size: 10px;
+  font-size: 9px;
 
   letter-spacing: 4px;
 
   color:
-    rgba(255, 255, 255, 0.55);
+    rgba(255, 255, 255, 0.5);
 }
 
 .dots {
   display: flex;
 
-  gap: 10px;
+  gap: 9px;
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 
   border-radius: 50%;
 
   background:
     rgba(255, 255, 255, 0.25);
 
-  transition: 0.3s;
+  transition:
+    all 0.3s ease;
 }
 
 .dot.active {
@@ -790,7 +866,7 @@ body {
 
 @media (max-width: 1000px) {
   .left-content {
-    left: 35px;
+    left: 4%;
 
     width: 280px;
   }
@@ -800,13 +876,19 @@ body {
   }
 
   .right-content {
-    right: 30px;
+    right: 4%;
 
     width: 180px;
   }
 
   .right-content h3 {
     font-size: 32px;
+  }
+
+  .product-area {
+    transform:
+      translate(-50%, -50%)
+      scale(0.85);
   }
 }
 
@@ -815,21 +897,28 @@ body {
 ========================= */
 
 @media (max-width: 750px) {
-  .page {
-    padding: 12px;
+  html,
+  body {
+    overflow: hidden;
   }
 
   .showcase {
-    height: 850px;
+    height: 100vh;
+
+    min-height: 600px;
   }
 
   .brand {
     left: 25px;
-    top: 25px;
+    top: 22px;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
   }
 
   .left-content {
-    top: 105px;
+    top: 95px;
 
     left: 25px;
     right: 25px;
@@ -841,34 +930,56 @@ body {
     text-align: center;
   }
 
+  .eyebrow {
+    margin-bottom: 12px;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+  }
+
   .left-content h1 {
-    font-size: 47px;
+    font-size: 43px;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 12px;
   }
 
   .left-content p {
+    max-width: 350px;
+
     margin: auto;
+
+    font-size: 11px;
+
+    line-height: 1.6;
   }
 
   .product-area {
-    top: 490px;
+    left: 50%;
+    top: 50%;
+
+    width: 400px;
+    height: 500px;
 
     transform:
       translate(-50%, -50%)
-      scale(0.78);
+      scale(0.72);
   }
 
   .right-content {
     top: auto;
 
-    bottom: 85px;
+    bottom: 70px;
 
     left: 50%;
     right: auto;
 
+    width: auto;
+
     transform:
       translateX(-50%);
-
-    width: auto;
 
     text-align: center;
   }
@@ -876,25 +987,78 @@ body {
   .product-count {
     justify-content: center;
 
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 
   .right-content h3 {
-    font-size: 30px;
+    font-size: 27px;
 
-    margin-bottom: 15px;
+    margin-bottom: 12px;
   }
 
   .right-content button {
     margin: auto;
+
+    padding:
+      11px 20px;
+  }
+
+  .price {
+    bottom: 0;
+
+    font-size: 30px;
   }
 
   .bottom-line {
     left: 25px;
     right: 25px;
+
+    bottom: 18px;
   }
 
   .bottom-line > span {
     display: none;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 430px) {
+  .left-content {
+    top: 85px;
+  }
+
+  .left-content h1 {
+    font-size: 37px;
+  }
+
+  .left-content p {
+    font-size: 10px;
+  }
+
+  .product-area {
+    transform:
+      translate(-50%, -50%)
+      scale(0.62);
+  }
+
+  .right-content {
+    bottom: 65px;
+  }
+
+  .right-content h3 {
+    font-size: 24px;
+  }
+
+  .bubble-1 {
+    width: 45px;
+    height: 45px;
+  }
+
+  .bubble-3 {
+    width: 50px;
+    height: 50px;
   }
 }
